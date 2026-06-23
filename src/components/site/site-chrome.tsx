@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Phone, Menu, X, ArrowRight, Mail, MapPin } from "lucide-react";
 import logo from "@/assets/logo.png";
 
-export const BOOK_URL = "https://broadwaychiropracticclinic.janeapp.co.uk";
+export const BOOK_URL = "https://broadwaychiropracticclinic.janeapp.co.uk/#/staff_member/2";
 export const PHONE_DISPLAY = "07754 983276";
 export const PHONE_TEL = "07754983276";
 export const EMAIL = "info@janetteleechiropractorpeterborough.com";
