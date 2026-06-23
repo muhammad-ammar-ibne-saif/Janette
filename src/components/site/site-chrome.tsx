@@ -45,12 +45,25 @@ export function SectionLabel({ children }: { children: React.ReactNode }) {
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <header
@@ -98,41 +111,68 @@ export function Header() {
           <button
             aria-label="Open menu"
             onClick={() => setOpen(true)}
-            className="lg:hidden grid h-10 w-10 place-items-center rounded-full border border-border bg-card"
+            className="lg:hidden grid h-10 w-10 place-items-center rounded-full border border-border bg-card hover:bg-primary/10 transition-colors"
           >
             <Menu className="h-5 w-5" />
           </button>
         </div>
       </div>
 
+      {/* Mobile Menu Overlay */}
       {open && (
-        <div className="fixed inset-0 z-50 bg-background lg:hidden overflow-y-auto">
-          <div className="container-page flex items-center justify-between py-3">
-            <Logo className="h-12 w-auto" />
-            <button aria-label="Close menu" onClick={() => setOpen(false)} className="grid h-10 w-10 place-items-center rounded-full border border-border">
-              <X className="h-5 w-5" />
-            </button>
-          </div>
-          <nav className="container-page mt-6 flex flex-col gap-1 pb-10">
-            {nav.map((n, i) => (
-              <Link
-                key={`m-${n.to}-${n.label}-${i}`}
-                to={n.to}
-                hash={"hash" in n ? n.hash : undefined}
-                onClick={() => setOpen(false)}
-                className="border-b border-border/60 py-4 font-display text-2xl"
+        <>
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm lg:hidden z-40"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
+          
+          {/* Menu Panel */}
+          <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-background shadow-2xl lg:hidden z-50 animate-in slide-in-from-right">
+            <div className="flex items-center justify-between p-4 border-b border-border/70">
+              <Logo className="h-12 w-auto" />
+              <button 
+                aria-label="Close menu" 
+                onClick={() => setOpen(false)} 
+                className="grid h-10 w-10 place-items-center rounded-full border border-border hover:bg-primary/10 transition-colors"
               >
-                {n.label}
-              </Link>
-            ))}
-            <a href={BOOK_URL} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 text-primary-foreground">
-              Book Appointment <ArrowRight className="h-4 w-4" />
-            </a>
-            <a href={`tel:${PHONE_TEL}`} className="mt-3 inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-4">
-              <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
-            </a>
-          </nav>
-        </div>
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            
+            <nav className="flex flex-col p-4 gap-1">
+              {nav.map((n, i) => (
+                <Link
+                  key={`m-${n.to}-${n.label}-${i}`}
+                  to={n.to}
+                  hash={"hash" in n ? n.hash : undefined}
+                  onClick={() => setOpen(false)}
+                  className="px-4 py-4 text-lg font-medium border-b border-border/40 hover:bg-primary/5 rounded-lg transition-colors"
+                >
+                  {n.label}
+                </Link>
+              ))}
+              
+              <div className="mt-4 space-y-3 pt-4 border-t border-border/60">
+                <a 
+                  href={BOOK_URL} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="flex items-center justify-center gap-2 w-full rounded-full bg-primary px-6 py-4 text-primary-foreground font-medium hover:opacity-90 transition-opacity"
+                >
+                  Book Appointment <ArrowRight className="h-4 w-4" />
+                </a>
+                <a 
+                  href={`tel:${PHONE_TEL}`} 
+                  className="flex items-center justify-center gap-2 w-full rounded-full border border-border px-6 py-4 text-foreground font-medium hover:bg-primary/5 transition-colors"
+                >
+                  <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
+                </a>
+              </div>
+            </nav>
+          </div>
+        </>
       )}
     </header>
   );
