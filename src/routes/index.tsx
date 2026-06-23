@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import clinic from "@/assets/clinic-interior.jpg";
 import {
-  Logo, SectionLabel, CTASection,
+   SectionLabel, CTASection,
   BOOK_URL, PHONE_DISPLAY, PHONE_TEL,
 } from "@/components/site/site-chrome";
 
