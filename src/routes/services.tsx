@@ -3,7 +3,7 @@ import {
   Activity, HeartPulse, Sparkles, UserRound, Check,
   Shield, Calendar, Clock, Brain, Bone, Footprints, Stethoscope,
 } from "lucide-react";
-import { SectionLabel, CTASection, Logo } from "@/components/site/site-chrome";
+import { SectionLabel, CTASection } from "@/components/site/site-chrome";
 
 export const Route = createFileRoute("/services")({
   head: () => ({

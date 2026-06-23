@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Phone, Mail, MapPin, ArrowRight, Calendar, Clock } from "lucide-react";
 import {
   SectionLabel, BOOK_URL, PHONE_DISPLAY, PHONE_TEL, EMAIL,
-  ADDRESS_LINE_1, ADDRESS_LINE_2, ADDRESS_FULL, Logo,
+  ADDRESS_LINE_1, ADDRESS_LINE_2, ADDRESS_FULL,
 } from "@/components/site/site-chrome";
 
 export const Route = createFileRoute("/contact")({
