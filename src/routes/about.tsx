@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Shield, MapPin, HeartPulse, UserRound, Award, Check } from "lucide-react";
 import clinic from "@/assets/clinic-interior.jpg";
-import { SectionLabel, CTASection, LOGO } from "@/components/site/site-chrome";
+import { SectionLabel, CTASection } from "@/components/site/site-chrome";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -10,7 +10,7 @@ export const Route = createFileRoute("/about")({
       { name: "description", content: "Meet Janette M. Lee — an independent GCC Registered Chiropractor in Peterborough with nearly 40 years of experience providing personal, gentle care." },
       { property: "og:title", content: "About Janette Lee — Chiropractor in Peterborough" },
       { property: "og:description", content: "Nearly four decades of experience providing personal, gentle chiropractic care in Peterborough." },
-      { property: "og:image", content: LOGO },
+      { property: "og:image" },
       { property: "og:url", content: "/about" },
     ],
     links: [{ rel: "canonical", href: "/about" }],

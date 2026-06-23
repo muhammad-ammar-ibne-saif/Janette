@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Phone, Mail, MapPin, ArrowRight, Calendar, Clock } from "lucide-react";
 import {
   SectionLabel, BOOK_URL, PHONE_DISPLAY, PHONE_TEL, EMAIL,
-  ADDRESS_LINE_1, ADDRESS_LINE_2, ADDRESS_FULL, LOGO,
+  ADDRESS_LINE_1, ADDRESS_LINE_2, ADDRESS_FULL, Logo,
 } from "@/components/site/site-chrome";
 
 export const Route = createFileRoute("/contact")({
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Book an appointment with Janette Lee, GCC Registered Chiropractor in Peterborough. Call 07754 983276, email or book online via Jane App." },
       { property: "og:title", content: "Contact & Book — Janette Lee Chiropractor Peterborough" },
       { property: "og:description", content: "Book an appointment online, by phone or email. Janette Lee, GCC Registered Chiropractor, Peterborough." },
-      { property: "og:image", content: LOGO },
+      { property: "og:image" },
       { property: "og:url", content: "/contact" },
     ],
     links: [{ rel: "canonical", href: "/contact" }],

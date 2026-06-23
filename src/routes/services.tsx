@@ -3,7 +3,7 @@ import {
   Activity, HeartPulse, Sparkles, UserRound, Check,
   Shield, Calendar, Clock, Brain, Bone, Footprints, Stethoscope,
 } from "lucide-react";
-import { SectionLabel, CTASection, LOGO } from "@/components/site/site-chrome";
+import { SectionLabel, CTASection, Logo } from "@/components/site/site-chrome";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/services")({
       { name: "description", content: "Chiropractic care in Peterborough for back pain, neck pain, leg pain, headaches, pregnancy related care, postural assessment and more. GCC Registered." },
       { property: "og:title", content: "Services & Conditions — Janette Lee Chiropractor Peterborough" },
       { property: "og:description", content: "Personal chiropractic care for back pain, leg pain, headaches, pregnancy care, postural assessment and wellness in Peterborough." },
-      { property: "og:image", content: LOGO },
+      { property: "og:image" },
       { property: "og:url", content: "/services" },
     ],
     links: [{ rel: "canonical", href: "/services" }],
