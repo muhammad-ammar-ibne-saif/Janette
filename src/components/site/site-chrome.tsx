@@ -10,7 +10,7 @@ export const EMAIL = "info@janetteleechiropractorpeterborough.com";
 export const ADDRESS_LINE_1 = "124 Culley Court, Orton Southgate";
 export const ADDRESS_LINE_2 = "Peterborough, PE2 6XD";
 export const ADDRESS_FULL = "124 Culley Court, Orton Southgate, Peterborough, PE2 6XD";
-export const LOGO = Logo;
+
 const nav = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
@@ -31,6 +31,7 @@ export function Logo({ className = "h-14 w-auto" }: { className?: string }) {
     />
   );
 }
+export const LOGO = Logo;
 
 export function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
